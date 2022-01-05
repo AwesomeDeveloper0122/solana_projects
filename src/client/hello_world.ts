@@ -84,7 +84,7 @@ const GREETING_SIZE = borsh.serialize(
 ).length;
 
 /**
- * Establish a connection to the cluster
+ * Establish a connection t the clusteor
  */
 export async function establishConnection(): Promise<void> {
   const rpcUrl = await getRpcUrl();
@@ -100,6 +100,7 @@ export async function establishPayer(): Promise<void> {
   let fees = 0;
   if (!payer) {
     const {feeCalculator} = await connection.getRecentBlockhash();
+    console.log("feeCalculator is=",feeCalculator);
 
     // Calculate the cost to fund the greeter account
     fees += await connection.getMinimumBalanceForRentExemption(GREETING_SIZE);
